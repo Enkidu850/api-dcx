@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "Data conso expert",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "https://deltaconsoexpert.hellio.com/Token/v1/Token",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"login\": \"SydevApi\",\n   \"password\": \"E(78p2u5_gWvY\",\n   \"grant_type\" : \"authorization_code\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "PatrimonyExport",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "https://deltaconsoexpert.hellio.com/Services/v1/Patrimony/Export?token={{token}}&typesList=Compteur électrique&invariantsList&format=JSON"
+      }
+    },
+    {
+      "name": "SynthesisDeliveryPoint",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "https://deltaconsoexpert.hellio.com/Services/v1/Synthesis/DeliveryPoint?token={{token}}&format=json",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"Invariants\": [\"SI.526.001.EL\"],\n    \"SynthesisType\": \"Invoice\",\n    \"Periodicity\": \"Month\",\n    \"StartingMonth\": 1,\n    \"EndingMonth\": 12,\n    \"StartingYear\": 2024,\n    \"EndingYear\": 2024,\n    \"DistributionType\": \"Expendable\",\n    \"SlidingLastYear\": true,\n    \"WithoutEstimated\": true,\n    \"UseDJUCorrectors\": false,\n    \"DJUCorrectors\": [],\n    \"Threshold\": 10,\n    \"NbElement\" : 200,        \n    \"PageNumber\" : 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
